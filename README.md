@@ -12,6 +12,7 @@ DataX本身作为数据同步框架，将不同数据源的同步抽象为从源
 # 期望
 - PostgreSQL：实现支持同步写入PostgreSQL时，writeMode=update（支持ON DUPLICATE KEY UPDATE 语句）
 - 达梦数据库同步
+- 在进行表对表的同步时，如果目标库中不存在对应表，则自动进行创建
 
 # Support Data Channels 
 
