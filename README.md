@@ -11,10 +11,10 @@ DataX本身作为数据同步框架，将不同数据源的同步抽象为从源
 
 # 新扩展
 
-|    数据源     | Reader(读) |           Writer(写)           |
-|:----------:|:---------:|:-----------------------------:|
-|     达梦     |     √     |               √               |
-| Postgresql |           | 增加writeMode支持`update(主键或唯一键)`模式 |
+|    数据源     | Reader(读) |            Writer(写)            |                                                                                         文档                                                                                          |
+|:----------:|:---------:|:-------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|     达梦     |     √     |                √                | [读](https://github.com/HEEKDragonOne/Datax-Plus/tree/main/damengreader/doc/damengreader.md)、[写](https://github.com/HEEKDragonOne/Datax-Plus/tree/main/damengwriter/damengwriter.md) |
+| Postgresql |           | 增加writeMode支持`update(主键或唯一键)`模式 |                                                                                                                                                                                     |
 
 # Support Data Channels
 
