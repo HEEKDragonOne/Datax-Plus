@@ -14,7 +14,7 @@ DataX本身作为数据同步框架，将不同数据源的同步抽象为从源
 |    数据源     | Reader(读) |           Writer(写)           |
 |:----------:|:---------:|:-----------------------------:|
 |     达梦     |     √     |               √               |
-| Postgresql |           | 增加writeMode支持update(主键或唯一键)模式 |
+| Postgresql |           | 增加writeMode支持`update(主键或唯一键)`模式 |
 
 # Support Data Channels
 
