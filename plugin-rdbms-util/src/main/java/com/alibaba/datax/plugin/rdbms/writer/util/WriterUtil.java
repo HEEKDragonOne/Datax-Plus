@@ -131,6 +131,16 @@ public final class WriterUtil {
                     .append(")")
                     .append(onDuplicateKeyUpdateString(columnHolders))
                     .toString();
+        } else if (dataBaseType == DataBaseType.PostgreSQL
+                && writeMode.trim().toLowerCase().startsWith("update")) {
+            writeDataSqlTemplate = new StringBuilder()
+                    .append("INSERT INTO %s (")
+                    .append(StringUtils.join(columnHolders, ","))
+                    .append(") VALUES(")
+                    .append(StringUtils.join(valueHolders, ","))
+                    .append(")")
+                    .append(onConFlictDoString(writeMode, columnHolders))
+                    .toString();
         } else {
             if (dataBaseType == DataBaseType.DaMeng) {
                 if (writeMode.trim().toLowerCase().startsWith("insert")) {
@@ -254,6 +264,30 @@ public final class WriterUtil {
             sb.append("=VALUES(");
             sb.append(column);
             sb.append(")");
+        }
+
+        return sb.toString();
+    }
+
+
+    public static String onConFlictDoString(String conflict, List<String> columnHolders) {
+        conflict = conflict.replace("update", "").trim();
+        StringBuilder sb = new StringBuilder();
+        sb.append(" ON CONFLICT ");
+
+        if (!conflict.isEmpty()) {
+            sb.append("(").append(conflict).append(")");
+        }
+
+        sb.append(" DO UPDATE SET ");
+
+        boolean first = true;
+        for (String column : columnHolders) {
+            if (!first) {
+                sb.append(",");
+            }
+            first = false;
+            sb.append(column).append("=EXCLUDED.").append(column);
         }
 
         return sb.toString();

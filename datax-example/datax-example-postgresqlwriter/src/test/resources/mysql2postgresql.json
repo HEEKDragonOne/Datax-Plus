@@ -1,0 +1,51 @@
+{
+  "job": {
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "guest",
+            "password": "guest123",
+            "connection": [
+              {
+                "querySql": [
+                  "select * from test.banner_info;"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.199.13:23306/test"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "postgresqlwriter",
+          "parameter": {
+            "username": "guest",
+            "password": "guest123",
+            "connection": [
+              {
+                "jdbcUrl": "jdbc:postgresql://192.168.199.11:5432/test",
+                "table": [
+                  "banner_info"
+                ]
+              }
+            ],
+            "column": [
+              "*"
+            ],
+            "preSql": [],
+            "postSql": [],
+            "writeMode": "update(\"id\")"
+          }
+        }
+      }
+    ],
+    "setting": {
+      "speed": {
+        "channel": 5
+      }
+    }
+  }
+}
